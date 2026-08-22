@@ -13,45 +13,7 @@ Este repositorio contiene la página web de currículum vitae y portfolio person
 - **Dark/Light Mode**: Selector de tema visual fluido.
 - **Diseño Ultra-Responsivo**: Adaptado para celulares, tablets y escritorios.
 
----
 
-## 🛠️ Cómo Publicar en GitHub Pages (Paso a Paso)
-
-Para subir esta página a internet totalmente gratis a través de **GitHub Pages**, sigue estos simples pasos:
-
-### 1. Inicializar Git y subir a GitHub
-
-Abre la terminal en la carpeta del proyecto y ejecuta:
-
-```bash
-# Inicializar repositorio local (si aún no está iniciado)
-git init
-git add .
-git commit -m "Initial commit - Portfolio Tiare Pérez Concha"
-
-# Conectar con tu repositorio en GitHub
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/curriculumpage.git
-git push -u origin main
-```
-
-*(Reemplaza `TU-USUARIO` por tu nombre de usuario de GitHub).*
-
----
-
-### 2. Activar GitHub Pages en 1-Click
-
-1. Entra a tu repositorio en GitHub (`https://github.com/TU-USUARIO/curriculumpage`).
-2. Haz clic en la pestaña **Settings** (Configuración) en la parte superior.
-3. En el menú de la izquierda, selecciona **Pages**.
-4. En **Build and deployment** -> **Source**, selecciona **Deploy from a branch**.
-5. En **Branch**, elige `main` y la carpeta `/ (root)`.
-6. Haz clic en **Save** (Guardar).
-
-¡Listo! En 1-2 minutos tu sitio estará en vivo en:
-👉 `https://TU-USUARIO.github.io/curriculumpage/`
-
----
 
 ## 📬 Configuración Opcional del Formulario de Contacto (Web3Forms)
 
