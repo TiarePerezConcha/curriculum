@@ -15,15 +15,6 @@ Este repositorio contiene la página web de currículum vitae y portfolio person
 
 
 
-## 📬 Configuración Opcional del Formulario de Contacto (Web3Forms)
-
-El formulario de contacto utiliza **Web3Forms** (gratuito):
-1. Ingresa a [web3forms.com](https://web3forms.com/) y coloca tu email `tiare.perezconcha@gmail.com`.
-2. Copia tu `Access Key` que te llegará al correo.
-3. Abre `index.html` en la línea del formulario y reemplaza `YOUR_ACCESS_KEY_HERE` por tu clave personal.
-
----
-
 ## 📁 Estructura del Proyecto
 
 ```
