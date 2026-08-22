@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiare Pérez Concha | Analista Programadora & Ing. en Informática</title>
+    <meta name="description" content="Portfolio y CV profesional de Tiare Pérez Concha - Analista Programadora, Full-Stack Developer & Especialista en Ciberseguridad.">
+    <meta name="author" content="Tiare Pérez Concha">
+    
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#0b1120',
+                            card: '#1e293b',
+                            border: '#334155',
+                            accent: '#3b82f6',
+                            emerald: '#10b981',
+                            purple: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-fontawesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-blue-500 selection:text-white transition-colors duration-300">
+
+    <!-- PRINT HEADER (Only visible when printing) -->
+    <div class="hidden print-header">
+        <img src="assets/profile.jpg" alt="Tiare Pérez Concha">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-900">TIARE PÉREZ CONCHA</h1>
+            <p class="text-blue-600 font-semibold">Analista Programadora & Estudiante de Ingeniería en Informática</p>
+            <p class="text-sm text-slate-600">Email: tiare.perezconcha@gmail.com | Tel: +56 9 5001 1319 | Puente Alto, RM, Chile</p>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand -->
+                <a href="#inicio" class="flex items-center space-x-3 group">
+                    <span class="w-9 h-9 rounded-lg bg-gradient-to-tr from-blue-600 to-emerald-500 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
+                        TP
+                    </span>
+                    <span class="font-bold text-lg tracking-tight text-white group-hover:text-blue-400 transition-colors">
+                        Tiare Pérez<span class="text-blue-500">.dev</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#sobre-mi" class="text-slate-300 hover:text-blue-400 transition-colors">Sobre Mí</a>
+                    <a href="#habilidades" class="text-slate-300 hover:text-blue-400 transition-colors">Habilidades</a>
+                    <a href="#experiencia" class="text-slate-300 hover:text-blue-400 transition-colors">Experiencia</a>
+                    <a href="#proyectos" class="text-slate-300 hover:text-blue-400 transition-colors">Proyectos</a>
+                    <a href="#terminal-section" class="text-emerald-400 hover:text-emerald-300 font-mono transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-terminal text-xs"></i> CyberShell
+                    </a>
+                    <a href="#educacion" class="text-slate-300 hover:text-blue-400 transition-colors">Formación</a>
+                    <a href="#contacto" class="text-slate-300 hover:text-blue-400 transition-colors">Contacto</a>
+                </div>
+
+                <!-- Action Buttons (Desktop & Tablet) -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button class="theme-toggle-btn px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:border-yellow-400 transition-all flex items-center shadow-sm" title="Cambiar Tema">
+                        <i class="fa-solid fa-sun text-yellow-400 text-base"></i>
+                        <span class="text-xs font-semibold ml-1">Modo Claro</span>
+                    </button>
+                    <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="px-4 py-2 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2" title="Descargar CV en PDF">
+                        <i class="fa-solid fa-file-pdf"></i> Descargar CV
+                    </a>
+                </div>
+
+                <!-- Mobile Action Buttons -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button class="theme-toggle-btn px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs flex items-center" title="Cambiar Tema">
+                        <i class="fa-solid fa-sun text-yellow-400"></i>
+                    </button>
+                    <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="p-2 rounded-lg bg-blue-600 text-white text-xs flex items-center justify-center" title="Descargar CV en PDF">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </a>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <div class="pb-2 border-b border-slate-800 flex justify-between items-center">
+                <span class="text-xs text-slate-400">Tema Visual</span>
+                <button class="theme-toggle-btn px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-xs flex items-center">
+                    <i class="fa-solid fa-sun text-yellow-400 mr-1"></i> Cambiar Modo
+                </button>
+            </div>
+            <a href="#sobre-mi" class="block py-2 text-slate-300 hover:text-blue-400">Sobre Mí</a>
+            <a href="#habilidades" class="block py-2 text-slate-300 hover:text-blue-400">Habilidades</a>
+            <a href="#experiencia" class="block py-2 text-slate-300 hover:text-blue-400">Experiencia</a>
+            <a href="#proyectos" class="block py-2 text-slate-300 hover:text-blue-400">Proyectos</a>
+            <a href="#terminal-section" class="block py-2 text-emerald-400 font-mono"><i class="fa-solid fa-terminal mr-1"></i> CyberShell</a>
+            <a href="#educacion" class="block py-2 text-slate-300 hover:text-blue-400">Formación</a>
+            <a href="#contacto" class="block py-2 text-slate-300 hover:text-blue-400">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
+        <!-- Background Grid Effect -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Info Column -->
+                <div class="md:col-span-7 space-y-6">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-badge"></span>
+                        Disponible para Oportunidades Laborales
+                    </div>
+
+                    <!-- Main Heading -->
+                    <div class="space-y-2">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+                            Hola, soy <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">Tiare Pérez</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl font-medium text-slate-300">
+                            Analista Programadora & Estudiante de Ing. en Informática
+                        </p>
+                    </div>
+
+                    <!-- Summary -->
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+                        Analista Programadora con sólida formación en Ingeniería en Informática y experiencia práctica en desarrollo full-stack con <strong class="text-slate-200">React, Node.js y PostgreSQL</strong>. Experta en optimización de procesos mediante herramientas CRM y metodologías ágiles, enfocada en entregar soluciones tecnológicas eficientes, escalables y seguras.
+                    </p>
+
+                    <!-- Fast Contact Badges -->
+                    <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 pt-2">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-red-400"></i> Puente Alto, RM, Chile</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-envelope text-blue-400"></i> tiare.perezconcha@gmail.com</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-emerald-400"></i> +56 9 5001 1319</span>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#contacto" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Contactarme
+                        </a>
+                        <a href="#proyectos" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold border border-slate-700 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-code"></i> Ver Proyectos
+                        </a>
+                        <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="px-6 py-3 rounded-xl bg-blue-900/60 hover:bg-blue-800/60 text-blue-300 font-semibold border border-blue-700/60 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf"></i> Descargar CV PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Photo & Cyber Card Column -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <!-- Neon Glow Background -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-500 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition duration-500"></div>
+                        
+                        <!-- Profile Card -->
+                        <div class="relative bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-5 text-center">
+                            <div class="relative inline-block">
+                                <img src="assets/profile.jpg" alt="Tiare Pérez Concha" class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl object-cover border-2 border-blue-500/50 shadow-2xl mx-auto">
+                                <span class="absolute bottom-2 right-2 w-5 h-5 bg-emerald-500 border-4 border-slate-900 rounded-full" title="En línea"></span>
+                            </div>
+
+                            <div class="space-y-1">
+                                <h3 class="text-xl font-bold text-white">Tiare Pérez Concha</h3>
+                                <p class="text-xs text-blue-400 font-mono">Analista Programadora & Full-Stack</p>
+                            </div>
+
+                            <!-- Tech Chips Preview -->
+                            <div class="flex flex-wrap justify-center gap-1.5 pt-2">
+                                <span class="px-2.5 py-1 text-xs rounded-md bg-blue-950/80 text-blue-300 border border-blue-800/50"><i class="fa-brands fa-react mr-1"></i> React</span>
+                                <span class="px-2.5 py-1 text-xs rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-800/50"><i class="fa-brands fa-node-js mr-1"></i> Node.js</span>
+                                <span class="px-2.5 py-1 text-xs rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800/50"><i class="fa-solid fa-database mr-1"></i> PostgreSQL</span>
+                                <span class="px-2.5 py-1 text-xs rounded-md bg-purple-950/80 text-purple-300 border border-purple-800/50"><i class="fa-solid fa-shield-halved mr-1"></i> Pentesting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS & HIGHLIGHTS BANNER (Professional & Clean) -->
+    <section class="py-8 bg-slate-900/60 border-y border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 space-y-1">
+                    <p class="text-3xl font-extrabold text-blue-400">+3 Años</p>
+                    <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Experiencia TI, CRM & Auditoría</p>
+                </div>
+                <div class="p-4 space-y-1">
+                    <p class="text-3xl font-extrabold text-emerald-400">Full-Stack</p>
+                    <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">React + Node.js + PostgreSQL</p>
+                </div>
+                <div class="p-4 space-y-1">
+                    <p class="text-3xl font-extrabold text-purple-400">Web & Mobile</p>
+                    <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">React, Kotlin & Supabase</p>
+                </div>
+                <div class="p-4 space-y-1">
+                    <p class="text-3xl font-extrabold text-amber-400">Proyectos Activos</p>
+                    <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Conpi & Capp (Comparadora)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HABILIDADES TÉCNICAS Y HERRAMIENTAS -->
+    <section id="habilidades" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase">[ TECH STACK ]</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Habilidades & Tecnologías</h3>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Dominio de herramientas para desarrollo full-stack, infraestructura en la nube, ciberseguridad y gestión operativa.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Frontend -->
+                <div class="glass-card p-6 rounded-2xl hover:border-blue-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-blue-400">
+                        <div class="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                            <i class="fa-solid fa-code text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Desarrollo Front-End</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-react text-cyan-400"></i> React</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-bootstrap text-purple-400"></i> Bootstrap</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-android text-emerald-400"></i> Kotlin</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen-button text-blue-400"></i> Jetpack Compose</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-html5 text-orange-400"></i> HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Backend & Databases -->
+                <div class="glass-card p-6 rounded-2xl hover:border-emerald-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-400">
+                        <div class="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                            <i class="fa-solid fa-server text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Back-End & Bases de Datos</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-node-js text-emerald-400"></i> Node.js</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-database text-blue-400"></i> PostgreSQL</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-leaf text-emerald-400"></i> Spring Boot</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-gears text-yellow-400"></i> REST APIs</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Supabase</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-500"></i> Firebase</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-cubes text-orange-400"></i> RabbitMQ</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Cybersecurity & Pentesting -->
+                <div class="glass-card p-6 rounded-2xl hover:border-red-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-red-400">
+                        <div class="p-3 bg-red-500/10 rounded-xl border border-red-500/20">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Ciberseguridad & Pentesting</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-bug text-red-400"></i> Pentest 5 Fases</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-terminal text-blue-400"></i> Kali Linux</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-crosshairs text-orange-400"></i> Metasploit</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-eye text-emerald-400"></i> OpenVAS</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-lock text-yellow-400"></i> Auditoría de Vulnerabilidades</span>
+                    </div>
+                </div>
+
+                <!-- Category 4: Cloud & DevOps -->
+                <div class="glass-card p-6 rounded-2xl hover:border-yellow-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-yellow-400">
+                        <div class="p-3 bg-yellow-500/10 rounded-xl border border-yellow-500/20">
+                            <i class="fa-solid fa-cloud text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Cloud & Herramientas DevOps</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-aws text-orange-400"></i> AWS (VPC, EC2)</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-docker text-blue-400"></i> Docker</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-git-alt text-red-400"></i> Git</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-github text-slate-200"></i> GitHub</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-code border-blue-400"></i> VS Code</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-brands fa-android text-emerald-400"></i> Android Studio</span>
+                    </div>
+                </div>
+
+                <!-- Category 5: CRM & Plataformas -->
+                <div class="glass-card p-6 rounded-2xl hover:border-purple-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-purple-400">
+                        <div class="p-3 bg-purple-500/10 rounded-xl border border-purple-500/20">
+                            <i class="fa-solid fa-headset text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Sistemas CRM & Reportería</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Inconcert</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Geovictoria</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Siebel</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">BSCS</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Genesys</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Neotel</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700"><i class="fa-solid fa-image text-blue-400 mr-1"></i> Photoshop</span>
+                    </div>
+                </div>
+
+                <!-- Category 6: IA & Metodologías -->
+                <div class="glass-card p-6 rounded-2xl hover:border-cyan-500/50 transition-all space-y-4">
+                    <div class="flex items-center space-x-3 text-cyan-400">
+                        <div class="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
+                            <i class="fa-solid fa-robot text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">IA para Devs & Metodologías</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-brain text-purple-400"></i> Claude AI</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-microchip text-blue-400"></i> GitHub Copilot</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-comments text-emerald-400"></i> ChatGPT</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-yellow-400"></i> Metodología Agile</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-language text-cyan-400"></i> Inglés Básico</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TERMINAL SHOWCASE (CyberShell) -->
+    <section id="terminal-section" class="py-20 bg-slate-900/80 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-3 mb-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+                    <i class="fa-solid fa-shield-cat"></i> CyberShell v2.4 Terminal
+                </div>
+                <h3 class="text-3xl font-bold text-white">Terminal Interactivo de Consola</h3>
+                <p class="text-slate-400 text-sm">
+                    Interactúa con mi perfil usando comandos CLI. Prueba escribir <span class="text-yellow-400 font-mono font-bold">pentest</span>, <span class="text-cyan-400 font-mono font-bold">whoami</span> o <span class="text-emerald-400 font-mono font-bold">skills</span>.
+                </p>
+            </div>
+
+            <!-- Terminal Window Component -->
+            <div class="terminal-window rounded-2xl bg-slate-950 overflow-hidden border border-slate-800">
+                <!-- Bar Top -->
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        <span class="text-xs text-slate-400 font-mono ml-2">tiare@cyber-sec: ~ (zsh)</span>
+                    </div>
+                    <!-- Quick Cmd Buttons -->
+                    <div class="flex items-center gap-1.5">
+                        <button data-cmd="whoami" class="terminal-cmd-btn px-2.5 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white">whoami</button>
+                        <button data-cmd="skills" class="terminal-cmd-btn px-2.5 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white">skills</button>
+                        <button data-cmd="projects" class="terminal-cmd-btn px-2.5 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white">projects</button>
+                        <button data-cmd="pentest" class="terminal-cmd-btn px-2.5 py-1 rounded text-xs font-mono bg-red-950/80 text-red-300 hover:bg-red-900 border border-red-800/50">pentest</button>
+                        <button data-cmd="clear" class="terminal-cmd-btn px-2 py-1 rounded text-xs font-mono bg-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- Terminal Content Box -->
+                <div id="terminal-output" class="p-6 font-mono text-xs sm:text-sm h-80 overflow-y-auto space-y-4">
+                    <div class="text-slate-400">
+                        Bienvenido a <span class="text-emerald-400 font-bold">CyberShell</span> - Terminal Personal de Tiare Pérez Concha.<br>
+                        Escribe '<span class="text-yellow-400">help</span>' para listar los comandos disponibles o haz clic en los botones superiores.
+                    </div>
+                </div>
+
+                <!-- Terminal Input Line -->
+                <div class="bg-slate-900/60 px-6 py-3 border-t border-slate-800 flex items-center font-mono text-sm">
+                    <span class="text-emerald-400 mr-2">tiare@cyber-sec</span>
+                    <span class="text-blue-400 mr-2 font-bold">~$</span>
+                    <input type="text" id="terminal-input" placeholder="Escribe un comando (ej: help)..." class="bg-transparent border-none outline-none text-white w-full focus:ring-0 font-mono text-sm">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCIA LABORAL -->
+    <section id="experiencia" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase">[ TRAYECTORIA ]</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Experiencia Laboral</h3>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Trayectoria en desarrollo de software, auditoría de datos y administración de plataformas CRM.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-8 md:before:left-1/2 before:w-0.5 before:bg-slate-800">
+                
+                <!-- Experience Item 1 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="flex items-center w-full md:w-1/2 md:pr-8 mb-4 md:mb-0 md:text-right order-1">
+                        <div class="glass-card p-6 rounded-2xl hover:border-blue-500/50 transition-all w-full space-y-3">
+                            <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono font-bold">2026 (Práctica Finalizada)</span>
+                            <h4 class="text-lg font-bold text-white">Desarrollo de Software (Práctica Profesional)</h4>
+                            <p class="text-xs text-blue-400 font-medium">Advance Ingeniería y Desarrollo SPA</p>
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 text-left list-disc list-inside">
+                                <li>Desarrollo del frontend en <strong class="text-white">React + Bootstrap</strong> para un sistema de gestión de federación de karate con control de acceso por roles (RBAC), modo oscuro y reglas de negocio.</li>
+                                <li>Construcción del backend y la base de datos para el mismo sistema integral.</li>
+                                <li>Elaboración de documentación técnica completa (Plan de Trabajo, Bitácora e Informes de Avance).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 border-4 border-slate-950 flex items-center justify-center text-white text-xs font-bold z-10 shadow-lg group-hover:scale-125 transition-transform order-2">
+                        1
+                    </div>
+
+                    <div class="w-full md:w-1/2 md:pl-8 order-3 hidden md:block"></div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="w-full md:w-1/2 md:pr-8 order-3 md:order-1 hidden md:block"></div>
+
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-slate-950 flex items-center justify-center text-white text-xs font-bold z-10 shadow-lg group-hover:scale-125 transition-transform order-2">
+                        2
+                    </div>
+
+                    <div class="flex items-center w-full md:w-1/2 md:pl-8 mb-4 md:mb-0 order-1 md:order-3">
+                        <div class="glass-card p-6 rounded-2xl hover:border-emerald-500/50 transition-all w-full space-y-3">
+                            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">Oct 2020 - Ene 2024</span>
+                            <h4 class="text-lg font-bold text-white">Atención al Cliente y Back Office</h4>
+                            <p class="text-xs text-emerald-400 font-medium">Teleperformance (Proyectos WOM y Transbank)</p>
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 text-left list-disc list-inside">
+                                <li>Administración de plataformas CRM y sistematización (<strong class="text-white">Inconcert, Geovictoria, Siebel, BSCS, Genesys</strong>) para gestión de clientes y reportería.</li>
+                                <li>Elaboración de reportes de rendimiento y monitoreo constante de bases de datos para asegurar precisión de información.</li>
+                                <li>Coordinación de KPI y continuidad operativa del servicio con altos estándares de calidad.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="flex items-center w-full md:w-1/2 md:pr-8 mb-4 md:mb-0 md:text-right order-1">
+                        <div class="glass-card p-6 rounded-2xl hover:border-purple-500/50 transition-all w-full space-y-3">
+                            <span class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-mono font-bold">Ene 2017 - Feb 2019</span>
+                            <h4 class="text-lg font-bold text-white">Cajera / Atención Directa</h4>
+                            <p class="text-xs text-purple-400 font-medium">Sodimac (Grupo Falabella)</p>
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 text-left list-disc list-inside">
+                                <li>Responsable de la cuadratura de caja y manejo de transacciones financieras.</li>
+                                <li>Atención directa al público bajo altos estándares de eficiencia y resolución de dudas.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-purple-600 border-4 border-slate-950 flex items-center justify-center text-white text-xs font-bold z-10 shadow-lg group-hover:scale-125 transition-transform order-2">
+                        3
+                    </div>
+
+                    <div class="w-full md:w-1/2 md:pl-8 order-3 hidden md:block"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS TÉCNICOS DESTACADOS Y EN DESARROLLO -->
+    <section id="proyectos" class="py-20 bg-slate-900/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase">[ PORTFOLIO & PROYECTOS ]</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Proyectos Destacados y Activos</h3>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Proyectos en desarrollo actual y sistemas completados aplicando buenas prácticas full-stack, aplicaciones web, móviles y ciberseguridad.
+                </p>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 pt-4">
+                    <button data-filter="all" class="filter-btn px-4 py-2 text-xs font-medium rounded-xl bg-blue-600 text-white shadow-lg transition-all">Todos</button>
+                    <button data-filter="active" class="filter-btn px-4 py-2 text-xs font-medium rounded-xl bg-slate-800/60 text-slate-300 hover:bg-slate-700 transition-all">🟢 En Desarrollo Actual</button>
+                    <button data-filter="mobile" class="filter-btn px-4 py-2 text-xs font-medium rounded-xl bg-slate-800/60 text-slate-300 hover:bg-slate-700 transition-all">Mobile (Kotlin)</button>
+                    <button data-filter="backend" class="filter-btn px-4 py-2 text-xs font-medium rounded-xl bg-slate-800/60 text-slate-300 hover:bg-slate-700 transition-all">Backend / Microservicios</button>
+                    <button data-filter="cyber" class="filter-btn px-4 py-2 text-xs font-medium rounded-xl bg-slate-800/60 text-slate-300 hover:bg-slate-700 transition-all">Pentesting</button>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Conpi (NUEVO EN DESARROLLO) -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-amber-500/50 transition-all space-y-4 group" data-category="active web frontend">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 text-amber-400">
+                            <i class="fa-solid fa-laptop-code text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-amber-950 text-amber-300 border border-amber-800 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-amber-400 pulse-badge"></span> En Desarrollo
+                        </span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Conpi — Plataforma Web</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Página y plataforma web moderna actualmente en construcción. Enfocada en ofrecer una interfaz ágil, diseño responsivo y gestión eficiente de contenidos interactivos.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Web App</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">JavaScript</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">UI/UX</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-amber-950 text-amber-300">Activo 2026</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Capp (NUEVO EN DESARROLLO) -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-cyan-500/50 transition-all space-y-4 group" data-category="active web frontend backend">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-cyan-400">
+                            <i class="fa-solid fa-scale-balanced text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 pulse-badge"></span> En Desarrollo
+                        </span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Capp — Comparadora de Precios</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Plataforma y aplicación web comparadora de precios orientada a ayudar a los usuarios a cotizar, analizar y seleccionar productos con las mejores ofertas del mercado.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Comparadora de Precios</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">React / Web</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">REST API</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-cyan-950 text-cyan-300">Activo 2026</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Cesta Orgánica -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-emerald-500/50 transition-all space-y-4 group" data-category="mobile">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400">
+                            <i class="fa-brands fa-android text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-emerald-950 text-emerald-400 border border-emerald-800">Android Native</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Cesta Orgánica — Mobile App</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Aplicación móvil Android desarrollada en Kotlin nativo con Jetpack Compose. Cuenta con arquitectura limpia y backend optimizado mediante migración completa desde Firebase hacia Supabase.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Kotlin</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Jetpack Compose</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Supabase</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Libro de Clases Digital -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-blue-500/50 transition-all space-y-4 group" data-category="backend">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20 text-blue-400">
+                            <i class="fa-solid fa-diagram-project text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-blue-950 text-blue-400 border border-blue-800">Microservices</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Libro de Clases Digital</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Sistema de gestión escolar distribuido basado en microservicios implementado con Spring Boot, descubrimiento dinámico con Netflix Eureka y mensajería con RabbitMQ.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Spring Boot</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Eureka</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">RabbitMQ</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Evaluación de Penetración Integral -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-red-500/50 transition-all space-y-4 group" data-category="cyber">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-red-500/10 rounded-xl border border-red-500/20 text-red-400">
+                            <i class="fa-solid fa-shield-halved text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-red-950 text-red-400 border border-red-800">Cybersecurity</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors">Pentest Integral 5 Fases</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Auditoría de seguridad defensiva y ofensiva de 5 fases (reconocimiento, escaneo con OpenVAS, explotación con Metasploit, post-explotación e informe técnico).
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Kali Linux</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">OpenVAS</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Metasploit</span>
+                    </div>
+                </div>
+
+                <!-- Project 6: Infraestructura Cloud AWS -->
+                <div class="project-card glass-card p-6 rounded-2xl hover:border-yellow-500/50 transition-all space-y-4 group" data-category="cloud">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-yellow-500/10 rounded-xl border border-yellow-500/20 text-yellow-400">
+                            <i class="fa-brands fa-aws text-2xl"></i>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-yellow-950 text-yellow-400 border border-yellow-800">DevOps & Cloud</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Infraestructura Cloud en AWS</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Diseño de arquitectura cloud en AWS (VPC, instancias EC2) integrando contenedores Docker y diagramas formales de arquitectura de red.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">AWS VPC</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">EC2</span>
+                        <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Docker</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN Y CERTIFICACIONES -->
+    <section id="educacion" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase">[ ACADÉMICO ]</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Educación & Certificaciones</h3>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Estudios formales, capacitación profesional técnica y certificaciones complementarias.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Education Box -->
+                <div class="glass-card p-6 rounded-2xl space-y-6">
+                    <h4 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-graduation-cap text-blue-400"></i> Formación Académica
+                    </h4>
+
+                    <div class="space-y-6">
+                        <!-- Degree 1 -->
+                        <div class="flex space-x-4">
+                            <div class="mt-1">
+                                <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+                            </div>
+                            <div class="space-y-1">
+                                <h5 class="text-base font-bold text-white">Ingeniería en Informática</h5>
+                                <p class="text-xs text-blue-400 font-mono">2024 - 2027 (En curso)</p>
+                                <p class="text-slate-300 text-xs">Formación profesional avanzada en ingeniería de software, arquitectura de sistemas y gestión tecnológica.</p>
+                            </div>
+                        </div>
+
+                        <!-- Degree 2 -->
+                        <div class="flex space-x-4">
+                            <div class="mt-1">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <div class="space-y-1">
+                                <h5 class="text-base font-bold text-white">Analista Programador</h5>
+                                <p class="text-xs text-emerald-400 font-mono">Duoc UC (2024 - 2026)</p>
+                                <p class="text-slate-300 text-xs">Título práctico en desarrollo de software, modelado de bases de datos y algoritmos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bootcamp -->
+                        <div class="flex space-x-4">
+                            <div class="mt-1">
+                                <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span>
+                            </div>
+                            <div class="space-y-1">
+                                <h5 class="text-base font-bold text-white">Desarrollador Aplicaciones Front-End Trainee</h5>
+                                <p class="text-xs text-purple-400 font-mono">SENCE / Duoc UC (Enero 2020 - Octubre 2020)</p>
+                                <p class="text-slate-300 text-xs">Capacitación intensiva en maquetación responsiva, lógica Web JavaScript y componentes UI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificates Box -->
+                <div class="glass-card p-6 rounded-2xl space-y-6">
+                    <h4 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-certificate text-emerald-400"></i> Certificaciones & Cursos
+                    </h4>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                            <div class="text-emerald-400 text-lg"><i class="fa-solid fa-award"></i></div>
+                            <h5 class="text-sm font-bold text-white">Desarrollador Front-End Trainee</h5>
+                            <p class="text-xs text-slate-400">SENCE / Duoc UC</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                            <div class="text-blue-400 text-lg"><i class="fa-solid fa-users text-blue-400"></i></div>
+                            <h5 class="text-sm font-bold text-white">Fortalecimiento de Ambientes de Trabajo</h5>
+                            <p class="text-xs text-slate-400">Capacitación Organizacional</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                            <div class="text-red-400 text-lg"><i class="fa-solid fa-kit-medical"></i></div>
+                            <h5 class="text-sm font-bold text-white">Primeros Auxilios</h5>
+                            <p class="text-xs text-slate-400">Certificación de Respuesta Médica</p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                            <div class="text-cyan-400 text-lg"><i class="fa-solid fa-comments"></i></div>
+                            <h5 class="text-sm font-bold text-white">Comunicación en Inglés</h5>
+                            <p class="text-xs text-slate-400">Herramientas Básicas para TI</p>
+                        </div>
+
+                    </div>
+
+                    <!-- PDF Download Banner inside certs -->
+                    <div class="p-4 rounded-xl bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-blue-700/40 flex items-center justify-between">
+                        <div class="space-y-0.5">
+                            <p class="text-xs font-bold text-white">¿Necesitas guardar mi perfil?</p>
+                            <p class="text-xs text-slate-300">Descarga la versión ejecutiva en PDF en 1 click.</p>
+                        </div>
+                        <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-lg shadow-blue-600/30 transition-all flex items-center gap-1.5" title="Descargar curriculum_vitae_CV_Tiare_Perez.pdf">
+                            <i class="fa-solid fa-download text-xs"></i> PDF
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GITHUB LIVE STATS CARD -->
+    <section class="py-12 bg-slate-900/40 border-y border-slate-800/60">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
+            <div id="github-stats-container" class="inline-flex items-center gap-6 px-6 py-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300 font-mono text-sm shadow-xl">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-github text-2xl text-white"></i>
+                    <span class="font-bold text-white">GitHub Metrics</span>
+                </div>
+                <div class="h-6 w-px bg-slate-800"></div>
+                <div>
+                    Repos: <span id="gh-repos-count" class="text-emerald-400 font-bold">6+</span>
+                </div>
+                <div class="h-6 w-px bg-slate-800"></div>
+                <div>
+                    Seguidores: <span id="gh-followers-count" class="text-blue-400 font-bold">10+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO & FORMULARIO -->
+    <section id="contacto" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Direct Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="space-y-3">
+                        <h2 class="text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase">[ CONTACTO ]</h2>
+                        <h3 class="text-3xl sm:text-4xl font-bold text-white">¿Hablamos sobre un proyecto?</h3>
+                        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                            Estoy disponible para incorporarme a equipos de desarrollo full-stack, análisis de sistemas o proyectos de ciberseguridad.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 font-mono text-sm">
+                        
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition-colors">
+                            <div class="p-3 bg-blue-500/10 rounded-lg text-blue-400 text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Correo Electrónico</p>
+                                <a href="mailto:tiare.perezconcha@gmail.com" class="text-white font-bold hover:text-blue-400">tiare.perezconcha@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+                            <div class="p-3 bg-emerald-500/10 rounded-lg text-emerald-400 text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Teléfono / WhatsApp</p>
+                                <a href="tel:+56950011319" class="text-white font-bold hover:text-emerald-400">+56 9 5001 1319</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition-colors">
+                            <div class="p-3 bg-purple-500/10 rounded-lg text-purple-400 text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Ubicación</p>
+                                <p class="text-white font-bold">Puente Alto, RM, Chile</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Form (Compatible with Web3Forms free API or mailto fallback) -->
+                <div class="lg:col-span-7">
+                    <div id="contact-form-container" class="glass-card p-8 rounded-3xl space-y-6">
+                        <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-blue-400"></i> Enviar Mensaje Directo
+                        </h4>
+
+                        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                            <input type="hidden" name="subject" value="Nuevo Mensaje desde el Portfolio de Tiare Pérez">
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label for="name" class="text-xs font-medium text-slate-300">Nombre Completo</label>
+                                    <input type="text" id="name" name="name" required placeholder="Tu nombre..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm">
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="email" class="text-xs font-medium text-slate-300">Correo de Contacto</label>
+                                    <input type="email" id="email" name="email" required placeholder="tuemail@ejemplo.com..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm">
+                                </div>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label for="message" class="text-xs font-medium text-slate-300">Mensaje / Oportunidad Laboral</label>
+                                <textarea id="message" name="message" rows="4" required placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-500 hover:from-blue-500 hover:to-emerald-400 text-white font-bold shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-800/80 text-center text-xs text-slate-500 space-y-2">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Tiare Pérez Concha — Todos los derechos reservados.</p>
+            <div class="flex items-center space-x-4">
+                <a href="#inicio" class="hover:text-blue-400">Ir arriba <i class="fa-solid fa-arrow-up text-xs"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>
