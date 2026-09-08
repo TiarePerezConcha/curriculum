@@ -31,7 +31,7 @@
     </script>
     
     <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-fontawesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0B1120] text-slate-800 dark:text-slate-200 min-h-screen selection:bg-blue-600 selection:text-white transition-colors duration-300">
@@ -100,6 +100,12 @@
 
     <!-- HERO SECTION -->
     <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
+        <!-- Subtle background gradient blobs -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+            <div class="hero-bg-blob hero-bg-blob-1"></div>
+            <div class="hero-bg-blob hero-bg-blob-2"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
@@ -118,7 +124,7 @@
                             Hola, soy <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-400 dark:from-blue-400 dark:via-indigo-300 dark:to-cyan-400">Tiare Pérez</span>
                         </h1>
                         <p class="text-xl sm:text-2xl font-bold text-slate-700 dark:text-slate-300">
-                            Analista Programadora & Estudiante de Ingeniería en Informática
+                            Analista Programadora &amp; Estudiante de Ingeniería en Informática
                         </p>
                     </div>
 
@@ -127,51 +133,83 @@
                         Apasionada por la tecnología y la creación de soluciones digitales que generen un impacto real. Me especializo en desarrollo full-stack con <strong class="text-slate-900 dark:text-white">React, Node.js y PostgreSQL</strong>. Actualmente, combino mi formación académica con experiencia práctica en proyectos reales, con foco en la innovación, el trabajo en equipo y la mejora continua.
                     </p>
 
-                    <!-- Stat Cards Grid (4 Mini Metric Cards) -->
+                    <!-- Stat Cards Grid (icon + number + label) -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                        <div class="portfolio-card p-4 rounded-2xl text-center space-y-1">
-                            <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading">+3</p>
-                            <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight">Años de experiencia en proyectos y práctica</p>
+                        <div class="stat-hero-card portfolio-card p-4 rounded-2xl flex items-center gap-3">
+                            <span class="stat-icon-wrap bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                                <i class="fa-solid fa-briefcase text-sm"></i>
+                            </span>
+                            <div>
+                                <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading leading-none">+3</p>
+                                <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-1">Años de experiencia en proyectos y práctica</p>
+                            </div>
                         </div>
-                        <div class="portfolio-card p-4 rounded-2xl text-center space-y-1">
-                            <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading">5+</p>
-                            <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight">Proyectos desarrollados</p>
+                        <div class="stat-hero-card portfolio-card p-4 rounded-2xl flex items-center gap-3">
+                            <span class="stat-icon-wrap bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400">
+                                <i class="fa-solid fa-code-branch text-sm"></i>
+                            </span>
+                            <div>
+                                <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading leading-none">5+</p>
+                                <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-1">Proyectos desarrollados</p>
+                            </div>
                         </div>
-                        <div class="portfolio-card p-4 rounded-2xl text-center space-y-1">
-                            <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading">100%</p>
-                            <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight">Comprometida con el aprendizaje</p>
+                        <div class="stat-hero-card portfolio-card p-4 rounded-2xl flex items-center gap-3">
+                            <span class="stat-icon-wrap bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400">
+                                <i class="fa-solid fa-shield-halved text-sm"></i>
+                            </span>
+                            <div>
+                                <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading leading-none">100%</p>
+                                <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-1">Comprometida con el aprendizaje</p>
+                            </div>
                         </div>
-                        <div class="portfolio-card p-4 rounded-2xl text-center space-y-1">
-                            <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading">∞</p>
-                            <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight">Con ganas de nuevos desafíos</p>
+                        <div class="stat-hero-card portfolio-card p-4 rounded-2xl flex items-center gap-3">
+                            <span class="stat-icon-wrap bg-cyan-100 dark:bg-cyan-900/40 text-cyan-600 dark:text-cyan-400">
+                                <i class="fa-solid fa-infinity text-sm"></i>
+                            </span>
+                            <div>
+                                <p class="text-2xl font-extrabold text-blue-600 dark:text-blue-400 font-heading leading-none">∞</p>
+                                <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-1">Con ganas de nuevos desafíos</p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Call To Action Buttons -->
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#proyectos" class="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <a href="#proyectos" class="hero-btn-primary px-7 py-3 rounded-full font-bold text-white flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
                             Ver proyectos <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
-                        <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="px-6 py-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold border border-slate-300 dark:border-slate-700 transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-download text-xs"></i> Descargar CV PDF
+                        <a href="assets/curriculum_vitae_CV_Tiare_Perez.pdf" download="curriculum_vitae_CV_Tiare_Perez.pdf" class="hero-btn-secondary px-7 py-3 rounded-full font-bold flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-arrow-down text-xs"></i> Descargar CV PDF
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Profile Photo Card -->
+                <!-- Right Profile Photo Column -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-sm">
-                        <!-- Profile Glow Frame -->
-                        <div class="profile-glow-frame">
-                            <img src="assets/profile.jpg" alt="Tiare Pérez Concha" class="w-full h-auto rounded-[1.75rem] object-cover shadow-2xl">
+                    <div class="hero-photo-wrap relative">
+
+                        <!-- Floating geometric decorative shapes behind photo -->
+                        <div class="hero-shapes-container" aria-hidden="true">
+                            <div class="hero-shape hero-shape-purple"></div>
+                            <div class="hero-shape hero-shape-blue"></div>
                         </div>
 
-                        <!-- Handwriting Annotation Badge -->
-                        <div class="absolute -bottom-6 -right-2 bg-white dark:bg-slate-800 px-4 py-2 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl rotate-2">
-                            <p class="handwriting-note text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-wide">
-                                Tecnología + Personas = Grandes cosas ♡
+                        <!-- Profile Card Container + Photo -->
+                        <div class="hero-photo-card relative z-10">
+                            <div class="hero-photo-inner relative overflow-hidden">
+                                <img src="assets/profile.jpg" alt="Tiare Pérez Concha" class="w-full h-auto object-cover block">
+                                <!-- Neon cyan indicator dot (visible in dark mode) -->
+                                <span class="dark-neon-dot" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <!-- Handwriting Note — floating on bottom-right -->
+                        <div class="hero-handwriting-wrap absolute z-20" aria-label="Nota manuscrita: Tecnología + Personas = Grandes cosas ♡">
+                            <p class="handwriting-note">
+                                Tecnología<br>+ Personas =<br>Grandes cosas<br><span class="handwriting-heart">♡</span>
                             </p>
                         </div>
+
                     </div>
                 </div>
 

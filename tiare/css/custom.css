@@ -111,6 +111,233 @@ html.dark ::-webkit-scrollbar-thumb {
     background: var(--accent-blue);
 }
 
+/* ========================================================
+   HERO SECTION - REDESIGN STYLES (MATCHING MOCKUP)
+   ======================================================== */
+
+/* Background ambient blobs */
+.hero-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+}
+.hero-bg-blob-1 {
+    width: 520px;
+    height: 520px;
+    top: -120px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.45), rgba(56, 189, 248, 0.2));
+}
+.hero-bg-blob-2 {
+    width: 380px;
+    height: 380px;
+    bottom: -60px;
+    left: -60px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.25), rgba(37, 99, 235, 0.15));
+}
+html.dark .hero-bg-blob-1 {
+    opacity: 0.15;
+}
+html.dark .hero-bg-blob-2 {
+    opacity: 0.12;
+}
+
+/* Photo wrapper */
+.hero-photo-wrap {
+    width: 290px;
+    max-width: 85vw;
+}
+
+/* Floating geometric shapes (Light mode) */
+.hero-shapes-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-shape-purple {
+    position: absolute;
+    top: -22px;
+    right: -24px;
+    width: 140px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.75), rgba(129, 140, 248, 0.65));
+    border-radius: 1.75rem;
+    transform: rotate(14deg);
+    transition: all 0.4s ease;
+}
+
+.hero-shape-blue {
+    position: absolute;
+    bottom: 30px;
+    right: -28px;
+    width: 120px;
+    height: 130px;
+    background: linear-gradient(135deg, rgba(147, 197, 253, 0.7), rgba(96, 165, 250, 0.55));
+    border-radius: 1.75rem;
+    transition: all 0.4s ease;
+}
+
+/* In Dark Mode: subtle backdrop glow instead of flat pastel shapes */
+html.dark .hero-shape-purple {
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.45), rgba(99, 102, 241, 0.2));
+    filter: blur(20px);
+    opacity: 0.4;
+    transform: scale(1.1);
+}
+
+html.dark .hero-shape-blue {
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent);
+    filter: blur(25px);
+    opacity: 0.35;
+}
+
+/* Photo Card Frame (Light vs Dark) */
+.hero-photo-card {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 2rem;
+    box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-photo-inner {
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.hero-photo-inner img {
+    border-radius: 1.5rem;
+    display: block;
+    width: 100%;
+}
+
+/* Dark mode: Vivid Cyan Neon Glowing Frame */
+html.dark .hero-photo-card {
+    background: #0b1120;
+    padding: 8px;
+    border-radius: 2rem;
+    border: 2px solid #00f2fe;
+    box-shadow:
+        0 0 25px rgba(0, 242, 254, 0.5),
+        0 0 50px rgba(0, 198, 255, 0.25),
+        inset 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+/* Neon dot indicator at the bottom-right inside photo (Dark mode only) */
+.dark-neon-dot {
+    display: none;
+}
+
+html.dark .dark-neon-dot {
+    display: block;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #00f2fe;
+    box-shadow: 0 0 8px #00f2fe, 0 0 16px rgba(0, 242, 254, 0.8);
+}
+
+/* Floating Handwriting Note */
+.hero-handwriting-wrap {
+    bottom: -22px;
+    right: -68px;
+    transform: rotate(5deg);
+    pointer-events: none;
+    line-height: 1.25;
+}
+
+.handwriting-note {
+    font-family: 'Caveat', cursive;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    transition: all 0.3s ease;
+}
+
+.handwriting-heart {
+    display: block;
+    text-align: center;
+    font-size: 1.45rem;
+    margin-top: 1px;
+}
+
+html.dark .handwriting-note {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.6), 0 0 24px rgba(56, 189, 248, 0.3);
+}
+
+html.dark .handwriting-heart {
+    color: #38bdf8;
+}
+
+/* Stat cards */
+.stat-hero-card {
+    min-height: 72px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-hero-card:hover {
+    transform: translateY(-3px);
+}
+html.dark .stat-hero-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 12px rgba(56, 189, 248, 0.06);
+}
+html.dark .stat-hero-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.6), 0 0 18px rgba(56, 189, 248, 0.15);
+}
+
+.stat-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    font-size: 0.9rem;
+}
+
+/* Hero CTA Buttons */
+.hero-btn-primary {
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+.hero-btn-primary:hover {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    box-shadow: 0 8px 28px rgba(37, 99, 235, 0.45);
+}
+.hero-btn-secondary {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    color: #1e293b;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+.hero-btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+html.dark .hero-btn-secondary {
+    background: rgba(15, 23, 42, 0.65);
+    border: 1.5px solid rgba(56, 189, 248, 0.35);
+    color: #f1f5f9;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+html.dark .hero-btn-secondary:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.6);
+}
+
+
+
 /* PRINT STYLES - PDF OPTIMIZATION */
 @media print {
     nav, footer, .no-print, #theme-toggle, .btn-action, #contact-form-container {
