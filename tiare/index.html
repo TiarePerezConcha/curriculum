@@ -1421,66 +1421,179 @@
 
     <script src="js/main.js"></script>
 
-<!-- LSC Telemetry & Security Agent v1.0 -->
+
+<!-- LSC Telemetry & Security Agent v2.0 -->
 <script>
-  (function(config) {
-    const start = performance.now();
-    window.addEventListener('load', function() {
-      const timing = window.performance && window.performance.timing ? window.performance.timing : {};
-      const payload = {
-        project_id: config.projectId,
-        event_type: 'heartbeat',
-        url: window.location.href,
-        load_time_ms: Math.round(performance.now() - start),
-        user_agent: navigator.userAgent,
-        metadata: {
-          sslValid: window.location.protocol === 'https:',
-          dnsTimeMs: timing.domainLookupEnd ? (timing.domainLookupEnd - timing.domainLookupStart) : 0,
-          tcpTimeMs: timing.connectEnd ? (timing.connectEnd - timing.connectStart) : 0,
-          timestamp: new Date().toISOString()
-        }
-      };
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(config.endpoint, new Blob([JSON.stringify(payload)], {type: 'application/json'}));
-      } else {
-        fetch(config.endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'apikey': config.apiKey, 'Authorization': 'Bearer ' + config.apiKey },
-          body: JSON.stringify(payload)
-        }).catch(function(){});
+(function (config) {
+  'use strict';
+
+  const state = {
+    errorCount: 0,
+    maxErrorsPerSession: config.maxErrorsPerSession ?? 20,
+    seenErrors: new Set(),
+    startTime: performance.now(),
+  };
+
+  const sampleRate = config.sampleRate ?? 1;
+  if (Math.random() > sampleRate) return;
+
+  function sanitizeUrl(url) {
+    try {
+      const u = new URL(url);
+      if (!config.includeQueryParams) {
+        u.search = '';
+        u.hash = '';
+      }
+      return u.toString();
+    } catch {
+      return 'invalid-url';
+    }
+  }
+
+  function send(payload) {
+    const body = JSON.stringify({
+      project_id: config.projectId,
+      event_type: payload.event || 'telemetry',
+      url: sanitizeUrl(window.location.href),
+      user_agent: navigator.userAgent,
+      metadata: {
+        ...payload,
+        timestamp: new Date().toISOString()
       }
     });
 
-    window.addEventListener('error', function(e) {
-      const errorPayload = {
-        project_id: config.projectId,
-        event_type: 'security_anomaly',
-        url: window.location.href,
-        user_agent: navigator.userAgent,
-        metadata: {
-          type: 'javascript_error',
-          message: e.message,
-          filename: e.filename,
-          lineno: e.lineno,
-          timestamp: new Date().toISOString()
-        }
-      };
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(config.endpoint, new Blob([JSON.stringify(errorPayload)], {type: 'application/json'}));
-      } else {
-        fetch(config.endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'apikey': config.apiKey, 'Authorization': 'Bearer ' + config.apiKey },
-          body: JSON.stringify(errorPayload)
-        }).catch(function(){});
-      }
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      const ok = navigator.sendBeacon(config.endpoint, blob);
+      if (!ok) fallbackSend(body);
+    } else {
+      fallbackSend(body);
+    }
+  }
+
+  function fallbackSend(body) {
+    fetch(config.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': config.apiKey,
+        'Authorization': 'Bearer ' + config.apiKey
+      },
+      body,
+      keepalive: true
+    }).catch(function () {});
+  }
+
+  function handleAnomaly(details) {
+    if (state.errorCount >= state.maxErrorsPerSession) return;
+
+    const key = details.type + ':' + (details.message || details.blockedUri || details.src || '');
+    if (state.seenErrors.has(key)) return;
+    state.seenErrors.add(key);
+
+    state.errorCount++;
+    send({
+      event: 'security_anomaly',
+      ...details,
     });
-  })({
-    projectId: 'curriculumpage-tiare',
-    endpoint: 'https://cvfybrtblxzpawnxqsnd.supabase.co/rest/v1/telemetry_logs',
-    apiKey: 'sb_publishable_FaHiwWE7FIHP5-Xr7F6UQg_bJYFphXb'
+  }
+
+  // 1. Heartbeat con Navigation Timing API v2 (TTFB, DOMContentLoaded, DNS, TCP)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      const navEntries = performance.getEntriesByType('navigation');
+      const nav = navEntries && navEntries.length > 0 ? navEntries[0] : null;
+
+      const payload = {
+        event: 'heartbeat',
+        loadTimeMs: Math.round(performance.now() - state.startTime),
+        sslValid: window.location.protocol === 'https:',
+      };
+
+      if (nav) {
+        payload.dnsTimeMs = Math.round(nav.domainLookupEnd - nav.domainLookupStart);
+        payload.tcpTimeMs = Math.round(nav.connectEnd - nav.connectStart);
+        payload.ttfbMs = Math.round(nav.responseStart - nav.requestStart);
+        payload.domContentLoadedMs = Math.round(nav.domContentLoadedEventEnd - nav.startTime);
+      }
+
+      send(payload);
+    }, 0);
   });
+
+  // 2. Errores JS
+  window.addEventListener('error', function (e) {
+    handleAnomaly({
+      type: 'javascript_error',
+      message: e.message,
+      source: e.filename,
+      line: e.lineno,
+      col: e.colno,
+    });
+  });
+
+  // 3. Promesas no manejadas (unhandledrejection)
+  window.addEventListener('unhandledrejection', function (e) {
+    handleAnomaly({
+      type: 'unhandled_rejection',
+      message: e.reason && e.reason.message ? e.reason.message : String(e.reason),
+    });
+  });
+
+  // 4. Violaciones CSP
+  document.addEventListener('securitypolicyviolation', function (e) {
+    handleAnomaly({
+      type: 'csp_violation',
+      blockedUri: e.blockedURI,
+      violatedDirective: e.violatedDirective,
+      sourceFile: e.sourceFile,
+      lineNumber: e.lineNumber,
+    });
+  });
+
+  // 5. Contenido mixto (HTTP en HTTPS)
+  window.addEventListener('load', function () {
+    if (window.location.protocol !== 'https:') return;
+    const insecure = performance.getEntriesByType('resource').filter(function (r) {
+      return r.name.indexOf('http://') === 0;
+    });
+    if (insecure.length > 0) {
+      handleAnomaly({
+        type: 'mixed_content',
+        count: insecure.length,
+        urls: insecure.slice(0, 5).map(function (r) { return r.name; }),
+      });
+    }
+  });
+
+  // 6. Inyección de DOM (XSS / Skimmers)
+  if (window.MutationObserver) {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (m) {
+        m.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          if (node.tagName === 'SCRIPT' || node.tagName === 'IFRAME') {
+            handleAnomaly({
+              type: 'dom_injection',
+              tag: node.tagName,
+              src: node.src || 'inline',
+            });
+          }
+        });
+      });
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+})({
+  projectId: 'curriculumpage-tiare',
+  endpoint: 'https://cvfybrtblxzpawnxqsnd.supabase.co/rest/v1/telemetry_logs',
+  apiKey: 'sb_publishable_FaHiwWE7FIHP5-Xr7F6UQg_bJYFphXb',
+  sampleRate: 1,
+  includeQueryParams: false,
+  maxErrorsPerSession: 20
+});
 </script>
 </body>
 </html>
+
 
